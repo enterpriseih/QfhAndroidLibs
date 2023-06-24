@@ -1,0 +1,11 @@
+plugins {
+    id 'com.android.application' version '8.0.1' apply false
+    id 'com.android.library' version '8.0.1' apply false
+
+    // 1.8.20 版本插件和 kapt 插件设置的 java 版本有冲突
+//    id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
+    id 'org.jetbrains.kotlin.android' version '1.7.22' apply false
+
+    // hilt
+    id 'com.google.dagger.hilt.android' version '2.44' apply false
+}

@@ -1,0 +1,94 @@
+plugins {
+    id "com.android.library"
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+
+    namespace 'android.qfh.modules.base'
+    compileSdkVersion SDKVersion.sdkVersion
+
+    defaultConfig {
+        minSdkVersion SDKVersion.minSdkVersion
+        targetSdkVersion SDKVersion.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    resourcePrefix "base_"
+
+}
+
+dependencies {
+
+    api project(":LibUtils")
+    api project(":LibFileDownloader")
+    api project(":LibLogs")
+
+    // 测试
+    testImplementation QfhDependencies.junit
+    androidTestImplementation QfhDependencies.android_junit
+    androidTestImplementation QfhDependencies.android_espresso_core
+
+    // base
+    api QfhDependencies.core_ktx
+    api QfhDependencies.appcompat
+    api QfhDependencies.material
+    api QfhDependencies.fragment_ktx
+    api QfhDependencies.activity_ktx
+
+    // 协程
+    api QfhDependencies.kotlinx_coroutines_core
+    api QfhDependencies.kotlinx_coroutines_android
+    api QfhDependencies.lifecycle_viewmodel_ktx
+    api QfhDependencies.lifecycle_runtime_ktx
+    api QfhDependencies.lifecycle_livedata_ktx
+
+    // 网络
+    api QfhDependencies.retrofit
+    api QfhDependencies.converter_gson
+
+    // 应用初始化
+    api "androidx.startup:startup-runtime:1.1.1"
+
+    // 键值对存储
+    api "androidx.datastore:datastore-preferences:1.0.0"
+
+    // okhttp 调试
+    api "com.squareup.okhttp3:logging-interceptor:3.5.0"
+
+    // json 解析
+    api "com.google.code.gson:gson:2.8.9"
+
+    // recyclerview
+    api "androidx.recyclerview:recyclerview:1.2.1"
+
+    // 运行时权限处理
+    api "com.guolindev.permissionx:permissionx:1.6.0"
+
+    // 图片加载
+    api QfhDependencies.glide
+
+    // 沉浸式
+    api "com.geyifeng.immersionbar:immersionbar:3.2.2"
+
+    // 分页数据加载
+    api "androidx.paging:paging-runtime-ktx:3.1.1"
+
+    // 存储访问框架
+    api "androidx.documentfile:documentfile:1.0.1"
+    
+}

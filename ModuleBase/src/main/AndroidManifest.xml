@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--通知权限-->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!--前台服务-->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <!--应用安装权限-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!--网络状态监控-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application>
+
+        <service
+            android:name=".service.MediaProjectionService"
+            android:foregroundServiceType="mediaProjection" />
+
+        <service android:name=".service.SimpleFileDownloadService" />
+
+        <!--文件分享 provider-->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+    </application>
+</manifest>

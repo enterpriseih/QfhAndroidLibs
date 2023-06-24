@@ -1,0 +1,14 @@
+<resources>
+
+    <!--module base-->
+    <string name="base_text_ok">确定</string>
+    <string name="base_text_cancel">取消</string>
+    <string name="base_text_common_permission_request">为了保证程序当前功能正常使用，请您同意以下权限申请</string>
+    <string name="base_text_common_permission_request_ok">已了解</string>
+    <string name="base_text_common_permission_request_cancel">@string/base_text_cancel</string>
+    <string name="base_text_common_permission_not_allow">当前权限已被禁止，为了保证程序当前功能正常使用，请前往应用设置界面手动开启</string>
+    <string name="base_text_request_permission_MANAGE_EXTERNAL_STORAGE">在 Android 11 及以上系统版本，必须开启管理文件存储权限才能直接访问 SD 卡下的文件真实路径</string>
+    <string name="base_text_common_load_data">数据加载中……</string>
+    <!--module base-->
+    <string name="base_error_unknown">未知错误</string>
+</resources>

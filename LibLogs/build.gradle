@@ -1,0 +1,56 @@
+
+plugins {
+    id "com.android.library"
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+
+android {
+
+    namespace 'android.qfh.libs.logs'
+    compileSdkVersion SDKVersion.sdkVersion
+
+    defaultConfig {
+        minSdkVersion SDKVersion.minSdkVersion
+        targetSdkVersion SDKVersion.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation":
+                                      "$projectDir/schemas".toString()]
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+
+}
+
+dependencies {
+
+    // 测试
+    testImplementation QfhDependencies.junit
+    androidTestImplementation QfhDependencies.android_junit
+    androidTestImplementation QfhDependencies.android_espresso_core
+
+    // 协程
+    implementation QfhDependencies.kotlinx_coroutines_core
+    implementation QfhDependencies.kotlinx_coroutines_android
+
+    // room
+    implementation QfhDependencies.room_runtime
+    kapt QfhDependencies.room_compiler
+    implementation QfhDependencies.room_ktx
+
+}
