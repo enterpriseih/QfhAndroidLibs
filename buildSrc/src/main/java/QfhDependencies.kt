@@ -62,4 +62,9 @@ object QfhDependencies {
     // exoplayer
     const val exoplayer_core = "androidx.media3:media3-exoplayer:${Versions.exoplayer_version}"
     const val exoplayer_ui = "androidx.media3:media3-ui:${Versions.exoplayer_version}"
+
+    // tv 开发
+    const val leanback = "androidx.leanback:leanback:1.2.0-alpha02"
+    const val leanback_paging = "androidx.leanback:leanback-paging:1.1.0-alpha09"
+    const val leanback_tab = "androidx.leanback:leanback-tab:1.1.0-beta01"
 }
