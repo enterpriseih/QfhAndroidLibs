@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
@@ -20,6 +19,8 @@ abstract class BaseForVp1Fragment<VB : ViewBinding> : Fragment() {
 
     private var firstLoadData = true
 
+    private var hasCreate = false
+
     protected abstract fun generalViewBinding(inflater: LayoutInflater, container: ViewGroup?): VB
 
     override fun onCreateView(
@@ -33,6 +34,7 @@ abstract class BaseForVp1Fragment<VB : ViewBinding> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        hasCreate = true
         initViews()
         initListener()
         @Suppress("DEPRECATION")
@@ -45,13 +47,15 @@ abstract class BaseForVp1Fragment<VB : ViewBinding> : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        hasCreate = false
     }
 
     @Suppress("OVERRIDE_DEPRECATION")
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        @Suppress("DEPRECATION")
         super.setUserVisibleHint(isVisibleToUser)
-        if (firstLoadData && isVisibleToUser && viewLifecycleOwner.lifecycle.currentState >= Lifecycle.State.CREATED) {
-            firstLoadData=false
+        if (firstLoadData && isVisibleToUser && hasCreate) {
+            firstLoadData = false
             initData()
         }
     }
