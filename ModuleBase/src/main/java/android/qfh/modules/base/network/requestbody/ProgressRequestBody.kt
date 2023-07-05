@@ -1,12 +1,16 @@
 package android.qfh.modules.base.network.requestbody
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import okio.Buffer
 import okio.BufferedSink
 import okio.ForwardingSink
-import okio.Okio
+import okio.buffer
+import okio.source
 import java.io.InputStream
 
 /**
@@ -27,6 +31,7 @@ class ProgressRequestBody(
 
     private var lastProgressByteCount = 0L
     private var sumCount = 0L
+
     // 回调间隔
     private val delayTime = 1000L
     private val timerJob: Job = coroutineScope.launch {
@@ -46,13 +51,13 @@ class ProgressRequestBody(
     }
 
     override fun writeTo(sink: BufferedSink) {
-        Okio.source(inputStream).use {
-            Okio.buffer(object : ForwardingSink(sink) {
+        inputStream.source().use {
+            object : ForwardingSink(sink) {
                 override fun write(source: Buffer, byteCount: Long) {
                     super.write(source, byteCount)
                     sumCount += byteCount
                 }
-            }).run {
+            }.buffer().run {
                 writeAll(it)
                 // 此步骤必须，否则调用 close 时会因为部分数据没有写入报失败
                 flush()

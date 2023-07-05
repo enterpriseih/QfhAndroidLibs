@@ -59,6 +59,7 @@ dependencies {
 
     // 网络
     api QfhDependencies.retrofit
+    api QfhDependencies.okHttp
     api QfhDependencies.converter_gson
 
     // 应用初始化
@@ -68,7 +69,7 @@ dependencies {
     api "androidx.datastore:datastore-preferences:1.0.0"
 
     // okhttp 调试
-    api "com.squareup.okhttp3:logging-interceptor:3.5.0"
+    api "com.squareup.okhttp3:logging-interceptor:4.11.0"
 
     // json 解析
     api "com.google.code.gson:gson:2.8.9"

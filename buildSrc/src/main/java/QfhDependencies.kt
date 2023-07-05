@@ -41,6 +41,7 @@ object QfhDependencies {
 
     // retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}"
+    const val okHttp = "com.squareup.okhttp3:okhttp:4.10.0"
     const val converter_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit_version}"
 
     // room
@@ -62,6 +63,8 @@ object QfhDependencies {
     // exoplayer
     const val exoplayer_core = "androidx.media3:media3-exoplayer:${Versions.exoplayer_version}"
     const val exoplayer_ui = "androidx.media3:media3-ui:${Versions.exoplayer_version}"
+    const val exoplayer_rtmp ="androidx.media3:media3-datasource-rtmp:${Versions.exoplayer_version}"
+
 
     // tv 开发
     const val leanback = "androidx.leanback:leanback:1.2.0-alpha02"
