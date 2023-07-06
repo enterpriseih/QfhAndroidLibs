@@ -9,7 +9,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
-@Database(entities = [CommonLog::class], version = 1)
+@Database(entities = [CommonLog::class], version = 2)
 @TypeConverters(DateConverter::class)
 internal abstract class LogsDatabase : RoomDatabase() {
 
@@ -22,7 +22,7 @@ internal abstract class LogsDatabase : RoomDatabase() {
                 LibLogsInit.logContext,
                 LogsDatabase::class.java,
                 NAME_DATABASE
-            ).build()
+            ).fallbackToDestructiveMigration().build()
         }
     }
 }
